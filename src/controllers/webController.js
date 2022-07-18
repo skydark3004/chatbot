@@ -70,6 +70,10 @@ function handleMessage(sender_psid, received_message) {
   // Check if the message contains text
   if (received_message.text) {
     // Create the payload for a basic text message
+    console.log("---------------------------------------------------");
+    console.log(received_message.text);
+    console.log("---------------------------------------------------");
+
     response = {
       text: `Bạn đã gửi tin nhắn là: "${received_message.text}". Bây giờ gửi cho tao 1 cái ảnh!`,
     };
