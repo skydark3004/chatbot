@@ -1,13 +1,15 @@
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
+
 exports.test = (req, res, next) => {
   res.send("hello");
 };
 
 exports.getWebHook = (req, res, next) => {
   // Your verify token. Should be a random string.
-  let VERIFY_TOKEN = process.env.VERIFY_TOKEN;
 
   // Parse the query params
   let mode = req.query["hub.mode"];
@@ -48,3 +50,12 @@ exports.postWebHook = (req, res, next) => {
     res.sendStatus(404);
   }
 };
+
+// Handles messages events
+function handleMessage(sender_psid, received_message) {}
+
+// Handles messaging_postbacks events
+function handlePostback(sender_psid, received_postback) {}
+
+// Sends response messages via the Send API
+function callSendAPI(sender_psid, response) {}
