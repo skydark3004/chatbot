@@ -5,12 +5,14 @@ const request = require("request");
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
+console.log(PAGE_ACCESS_TOKEN);
+console.log(VERIFY_TOKEN);
 
 exports.test = (req, res, next) => {
   res.send("hello");
 };
 
-app.get("/webhook", (req, res) => {
+exports.getWebHook = (req, res) => {
   // Parse the query params
   let mode = req.query["hub.mode"];
   let token = req.query["hub.verify_token"];
@@ -28,9 +30,9 @@ app.get("/webhook", (req, res) => {
       res.sendStatus(403);
     }
   }
-});
+};
 
-app.post("/webhook", (req, res) => {
+exports.postWebHook = (req, res) => {
   let body = req.body;
 
   // Checks if this is an event from a page subscription
@@ -60,7 +62,7 @@ app.post("/webhook", (req, res) => {
     // Returns a '404 Not Found' if event is not from a page subscription
     res.sendStatus(404);
   }
-});
+};
 
 function handleMessage(senderPsid, receivedMessage) {
   let response;

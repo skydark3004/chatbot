@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
-const webRoutes = require("./src/routes/webRoutes");
+const webRoutes = require("./routes/webRoutes");
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
